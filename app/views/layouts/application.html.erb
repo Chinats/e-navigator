@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ENavigator</title>
+    <title>InterviewScheduler</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -9,6 +9,19 @@
   </head>
 
   <body>
+    <header>
+      <nav><a class="nav-link" data-method="get" href="/">e-Navigator</a></nav>
+    </header>
+    <div>
+    <% if user_signed_in? %>
+        <strong><%= link_to current_user.username, pages_show_path %></strong>
+        <%= link_to 'プロフィール変更', edit_user_registration_path %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'サインアップ', new_user_registration_path %>
+        <%= link_to 'ログイン', new_user_session_path %>
+      <% end %>
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
