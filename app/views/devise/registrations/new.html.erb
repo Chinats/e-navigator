@@ -1,28 +1,54 @@
-<h2>Sign up</h2>
+<h2>ユーザー登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="field form-group">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :birthday %><br />
+    <%= f.datetime_field :birthday,
+    min: Time.zone.today.beginning_of_year,
+    max: Time.zone.today.end_of_year,
+    autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :sex %><br />
+    <%= f.label :man %>
+    <%= f.radio_button :sex, :man %>
+    <%= f.label :woman %>
+    <%= f.radio_button :sex, :woman %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :school %><br />
+    <%= f.text_field :school, autofocus: true, autocomplete: "school", class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>（<%= @minimum_password_length %> 文字以上で入力してください) </em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="actions form-group">
+    <%= f.submit "アカウント登録", class: "btn btn-success" %>
   </div>
 <% end %>
 
