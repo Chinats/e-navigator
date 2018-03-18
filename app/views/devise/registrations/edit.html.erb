@@ -65,6 +65,6 @@
 
 <h3>アカウントを削除する</h3>
 
-<p>Unhappy? <%= button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "本当に削除してよろしいですか？" }, method: :delete %></p>
+<p>Unhappy? <%= button_to "cancel_my_account", registration_path(resource_name), data: { confirm: "are_you_sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
