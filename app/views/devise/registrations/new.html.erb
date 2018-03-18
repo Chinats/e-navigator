@@ -14,27 +14,6 @@
   </div>
 
   <div class="field form-group">
-    <%= f.label :birthday %><br />
-    <%= f.datetime_field :birthday,
-    min: Time.zone.today.beginning_of_year,
-    max: Time.zone.today.end_of_year,
-    autofocus: true, class: "form-control" %>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :sex %><br />
-    <%= f.label :man %>
-    <%= f.radio_button :sex, :man %>
-    <%= f.label :woman %>
-    <%= f.radio_button :sex, :woman %>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :school %><br />
-    <%= f.text_field :school, autofocus: true, autocomplete: "school", class: "form-control" %>
-  </div>
-
-  <div class="field form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>（<%= @minimum_password_length %> 文字以上で入力してください) </em>

@@ -28,8 +28,9 @@ ja:
         name: "お名前"
         birthday: "生年月日"
         sex: "性別"
-        man: "男性"
-        woman: "女性"
+        male: "男性"
+        female: "女性"
+        others: "その他"
         school: "学校名"
     models:
       user: "ユーザ"
