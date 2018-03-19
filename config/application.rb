@@ -27,8 +27,5 @@ module ENavigator
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
-    # Setting language
-    config.i18n.default_locale = :ja
   end
 end
