@@ -65,6 +65,6 @@
 
 <h3>アカウントを削除する</h3>
 
-<p>Unhappy? <%= button_to "cancel_my_account", registration_path(resource_name), data: { confirm: "are_you_sure?" }, method: :delete %></p>
+<p><%= t('devise.registrations.edit.unhappy')%><%= button_to t('devise.registrations.edit.cancel_my_account'), registration_path(resource_name), data: { confirm: t('devise.registrations.edit.are_you_sure') }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to t('devise.confirmations.confirmed'), :back %>
