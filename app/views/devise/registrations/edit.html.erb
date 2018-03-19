@@ -1,0 +1,70 @@
+<h2>プロフィール編集</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field form-group">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :birthday %><br />
+    <%= f.date_field :birthday,
+    min: 1920-01-01,
+    max: Time.zone.today.end_of_year,
+    autofocus: true, autocomplete: "birthday", class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :sex %><br />
+    <%= f.label :male %>
+    <%= f.radio_button :sex, :male, autocomplete: "male" %>
+    <%= f.label :female %>
+    <%= f.radio_button :sex, :female, autocomplete: "female" %>
+    <%= f.label :others %>
+    <%= f.radio_button :sex, :others, autocomplete: "others" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :school %><br />
+    <%= f.text_field :school, autofocus: true, autocomplete: "school", class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :password %> <% if @minimum_password_length %><em>（<%= @minimum_password_length %> 文字以上で入力してください) </em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    <small>※変更しない場合は空欄のままにしてください。</small>
+  </div>
+  <div class="field form-group">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+    <small>※変更しない場合は空欄のままにしてください。</small>
+  </div>
+
+  <div class="field form-group">
+    <p>ご登録をご確認の上、現在のパスワードをご入力ください。</p>
+    <%= f.label :current_password %><br />
+    <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新する", class: "btn btn-success" %>
+  </div>
+<% end %>
+
+<h3>アカウントを削除する</h3>
+
+<p><%= t('devise.registrations.edit.unhappy')%><%= button_to t('devise.registrations.edit.cancel_my_account'), registration_path(resource_name), data: { confirm: t('devise.registrations.edit.are_you_sure') }, method: :delete %></p>
+
+<%= link_to t('devise.confirmations.confirmed'), :back %>
