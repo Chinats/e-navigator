@@ -1,0 +1,7 @@
+<h1>ユーザー一覧</h1>
+<p>※一覧は後半で作成するため表示内容は仮です。</p>
+<% @users = User.all %>
+<% @users.each do |user| %>
+  <%= user.name %><br/>
+  <%= user.email %><br/>
+<% end %>
