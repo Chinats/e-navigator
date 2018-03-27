@@ -10,16 +10,17 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :candidate %>
-    <%= form.text_field :candidate, id: :interview_candidate %>
+    <%= form.datetime_select :candidate,
+    min: Time.now,
+    max: Time.zone.today.end_of_year,
+    autofocus: true, autocomplete: "candidate", class: "form-control", id: :interview_candidate %>
   </div>
-
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :approval %>
-    <%= form.text_field :approval, id: :interview_approval %>
+    <%= form.text_field :approval, class: "form-control", id: :interview_approval %>
   </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
