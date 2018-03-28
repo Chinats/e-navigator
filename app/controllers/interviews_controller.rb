@@ -43,7 +43,7 @@ class InterviewsController < ApplicationController
   def update
     respond_to do |format|
       if @interview.update(interview_params)
-        format.html { redirect_to @interview, notice: 'Interview was successfully updated.' }
+        format.html { redirect_to @interview, notice: '面談日程が更新されました。' }
         format.json { render :show, status: :ok, location: @interview }
       else
         format.html { render :edit }
