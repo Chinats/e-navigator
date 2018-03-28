@@ -12,14 +12,13 @@
   <% end %>
   <div class="field form-group">
     <%= form.label :candidate %>
-    <%= form.datetime_select :candidate,
-    min: Time.now,
+    <%= form.datetime_local_field :candidate,
+    min: Time.zone.today,
     max: Time.zone.today.end_of_year,
     autofocus: true, autocomplete: "candidate", class: "form-control", id: :interview_candidate %>
   </div>
   <div class="field form-group">
-    <%= form.label :approval %>
-    <%= form.text_field :approval, class: "form-control", id: :interview_approval %>
+    <%= form.select :approval, options_for_select([['保留', '保留'], ['承認', '承認'], ['却下', '却下']]), class: "form-control", id: :interview_approval  %>
   </div>
   <div class="actions">
     <%= form.submit %>
