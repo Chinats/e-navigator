@@ -3,19 +3,23 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <td>名前</td>
-      <td>Email</td>
-      <td>年齢</td>
-      <td>面接日時</td>
-      <td>面接一覧</td>
+      <th>名前</th>
+      <th>Email</th>
+      <th>年齢</th>
+      <th>性別</th>
+      <th>学校名</th>
+      <th>面接日時</th>
+      <th>面接一覧</th>
     </tr>
   </thead>
-  <% @interviews.each do |interview| %>
+  <% @users.each do |user| %>
   <tr>
-    <td><%= User.find(interview.user_id).name %></td>
-    <td><%= User.find(interview.user_id).email %></td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
     <td>※年齢が入ります※</td>
-    <td><%= interview.candidate %></td>
+    <td><%= user.sex %></td>
+    <td><%= user.school %></td>
+    <td><%= Interview.find(user.id).candidate %></td>
     <td>※面接一覧へのリンクが入ります※</td>
   </tr>
   <% end %>
