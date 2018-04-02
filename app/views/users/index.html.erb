@@ -20,13 +20,13 @@
     <% if user.birthday? %>
       <%= (Time.zone.now.year) - (user.birthday.year) %>才
     <% elsif %>
-      誕生日を登録してください。
+      生年月日が未登録です。
     <% end %>
     </td>
     <td><%= user.sex %></td>
     <td><%= user.school %></td>
-    <td><%= Interview.find(user.id).candidate rescue nil %></td>
-    <td>※面接一覧へのリンクが入ります※</td>
+    <td><%= Interview.find(user.id).candidate.strftime("%Y年%m月%d日 %H時%M分") rescue nil %></td>
+    <td class="text-center"><a href="#" class="btn btn-primary">面接一覧</a></td>
   </tr>
   <% end %>
 </table>
