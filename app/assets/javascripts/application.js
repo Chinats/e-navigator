@@ -1,3 +1,3 @@
-// Use fo devise
+// Use for devise
 //= require rails-ujs
 //= require_tree .

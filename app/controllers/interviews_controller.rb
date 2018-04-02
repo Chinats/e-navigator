@@ -24,32 +24,26 @@ class InterviewsController < ApplicationController
   def create
     @interview = Interview.new(interview_params)
     @interview.user = current_user
-    respond_to do |format|
-      if @interview.save
-        format.html { redirect_to @interview, notice: 'Interview was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @interview.save
+      redirect_to @interview, notice: '面談日程が作成されました。'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /interviews/1
   def update
-    respond_to do |format|
-      if @interview.update(interview_params)
-        format.html { redirect_to @interview, notice: '面談日程が更新されました。' }
-      else
-        format.html { render :edit }
-      end
+    if @interview.update(interview_params)
+      redirect_to @interview, notice: '面談日程が更新されました。'
+    else
+      render :edit
     end
   end
 
   # DELETE /interviews/1
   def destroy
     @interview.destroy
-    respond_to do |format|
-      format.html { redirect_to interviews_url, notice: 'Interview was successfully destroyed.' }
-    end
+    redirect_to interviews_url, notice: '面談日程が削除されました。'
   end
 
   private
