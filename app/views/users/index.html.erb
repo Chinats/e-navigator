@@ -25,7 +25,7 @@
     </td>
     <td><%= user.sex %></td>
     <td><%= user.school %></td>
-    <td><%= Interview.find(user.id).candidate %></td>
+    <td><%= Interview.find(user.id).candidate rescue nil %></td>
     <td>※面接一覧へのリンクが入ります※</td>
   </tr>
   <% end %>
