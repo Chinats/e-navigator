@@ -16,7 +16,13 @@
   <tr>
     <td><%= user.name %></td>
     <td><%= user.email %></td>
-    <td>※年齢が入ります※</td>
+    <td>
+    <% if user.birthday? %>
+      <%= (Time.zone.now.year) - (user.birthday.year) %>才
+    <% elsif %>
+      誕生日を登録してください。
+    <% end %>
+    </td>
     <td><%= user.sex %></td>
     <td><%= user.school %></td>
     <td><%= Interview.find(user.id).candidate %></td>
