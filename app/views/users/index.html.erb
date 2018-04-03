@@ -25,7 +25,7 @@
     </td>
     <td><%= user.sex %></td>
     <td><%= user.school %></td>
-    <td><%= Interview.find(user.id).candidate.strftime("%Y年%m月%d日 %H時%M分") rescue nil %></td>
+    <td><%= Interview.where(approval: '承認').find_by(user_id: user.id).candidate.strftime("%Y年%m月%d日 %H時%M分") rescue nil %></td>
     <td class="text-center"><a href="#" class="btn btn-primary">面接一覧</a></td>
   </tr>
   <% end %>
