@@ -1,0 +1,23 @@
+<%= form_with(model: interview, local: true) do |form| %>
+  <% if interview.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(interview.errors.count, "error") %> prohibited this interview from being saved:</h2>
+
+      <ul>
+      <% interview.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field form-group">
+    <%= form.label :candidate %>
+    <%= form.datetime_local_field :candidate,
+    min: Time.zone.today,
+    max: Time.zone.today.end_of_year,
+    autofocus: true, autocomplete: "candidate", class: "form-control", id: :interview_candidate %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,7 +1,22 @@
 <h1>ユーザー一覧</h1>
 <p>※一覧は後半で作成するため表示内容は仮です。</p>
-<% @users = User.all %>
-<% @users.each do |user| %>
-  <%= user.name %><br/>
-  <%= user.email %><br/>
-<% end %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <td>名前</td>
+      <td>Email</td>
+      <td>年齢</td>
+      <td>面接日時</td>
+      <td>面接一覧</td>
+    </tr>
+  </thead>
+  <% @interviews.each do |interview| %>
+  <tr>
+    <td><%= User.find(interview.user_id).name %></td>
+    <td><%= User.find(interview.user_id).email %></td>
+    <td>※年齢が入ります※</td>
+    <td><%= interview.candidate %></td>
+    <td>※面接一覧へのリンクが入ります※</td>
+  </tr>
+  <% end %>
+</table>
