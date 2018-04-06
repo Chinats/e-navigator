@@ -4,7 +4,8 @@ class InterviewsController < ApplicationController
 
   # GET /interviews
   def index
-    @interviews = current_user.interviews
+    @user = User.find(params[:user_id])
+    @interviews = @user.interviews
   end
 
   # GET /interviews/1
