@@ -26,7 +26,7 @@ class InterviewsController < ApplicationController
     @interview = Interview.new(interview_params)
     @interview.user = current_user
     if @interview.save
-      redirect_to @interview, notice: '面談日程が作成されました。'
+      redirect_to @interview, notice: '面接日程が作成されました。'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class InterviewsController < ApplicationController
   # PATCH/PUT /interviews/1
   def update
     if @interview.update(interview_params)
-      redirect_to @interview, notice: '面談日程が更新されました。'
+      redirect_to @interview, notice: '面接日程が更新されました。'
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class InterviewsController < ApplicationController
   # DELETE /interviews/1
   def destroy
     @interview.destroy
-    redirect_to interviews_url, notice: '面談日程が削除されました。'
+    redirect_to interviews_url, notice: '面接日程が削除されました。'
   end
 
   private
