@@ -1,0 +1,10 @@
+<h1><%= @user.name %>さんの面接一覧</h1>
+<ul>
+  <% @interviews.each do |interview| %>
+  <li><%= interview.candidate.to_s(:datetime) %></li>
+  <% end %>
+</ul>
+
+<ul>
+  <li><%= link_to '戻る', root_path %></li>
+</ul>
