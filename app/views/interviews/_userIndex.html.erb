@@ -7,7 +7,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @interviews.each do |interview| %>
       <tr>
@@ -19,7 +18,6 @@
     <% end %>
   </tbody>
 </table>
-
 <ul class="sw-List_plane">
   <li><%= link_to '新しい面接日程を登録する', new_interview_path %></li>
   <li><%= link_to '戻る', root_path %></li>
