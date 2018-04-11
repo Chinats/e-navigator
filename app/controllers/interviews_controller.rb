@@ -8,43 +8,48 @@ class InterviewsController < ApplicationController
     @interviews = @user.interviews
   end
 
-  # GET /interviews/1
+  # GET /users/:id/interviews/1
   def show
+    @user = User.find(params[:user_id])
   end
 
-  # GET /interviews/new
+  # GET /users/:id/interviews/new
   def new
+    @user = current_user
     @interview = Interview.new
   end
 
-  # GET /interviews/1/edit
+  # GET /users/:id/interviews/1/edit
   def edit
+    @user = User.find(params[:user_id])
   end
 
-  # POST /interviews
+  # POST /users/:id/interviews
   def create
     @interview = Interview.new(interview_params)
     @interview.user = current_user
+    @user = current_user
     if @interview.save
-      redirect_to @interview, notice: '面接日程が作成されました。'
+      redirect_to user_interview_path(@user, @interview), notice: '面接日程が作成されました。'
     else
       render :new
     end
   end
 
-  # PATCH/PUT /interviews/1
+  # PATCH/PUT /users/:id/interviews/1
   def update
+    @interview.user = current_user
     if @interview.update(interview_params)
-      redirect_to @interview, notice: '面接日程が更新されました。'
+      redirect_to user_interview_path, notice: '面接日程が更新されました。'
     else
       render :edit
     end
   end
 
-  # DELETE /interviews/1
+  # DELETE /users/:id/interviews/1
   def destroy
     @interview.destroy
-    redirect_to interviews_url, notice: '面接日程が削除されました。'
+    redirect_to user_interviews_url, notice: '面接日程が削除されました。'
   end
 
   private
