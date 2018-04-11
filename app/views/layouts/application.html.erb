@@ -19,7 +19,7 @@
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
                 <li><%= link_to 'プロフィール編集', edit_user_registration_path %></li>
-                <li><%= link_to '自分の面接一覧', user_interviews_index_path(current_user) %></li>
+                <li><%= link_to '自分の面接一覧', user_interviews_path(current_user) %></li>
                 <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
               <% else %>
                 <li><%= link_to 'ユーザー登録', new_user_registration_path %></li>
