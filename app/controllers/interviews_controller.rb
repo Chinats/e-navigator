@@ -6,6 +6,14 @@ class InterviewsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @interviews = @user.interviews
+    def update
+      @interview.approval = "承認"
+      if @interview.save
+        redirect_to user_interview_path, notice: '日程が更新されました。'
+      else
+        render :index
+      end
+    end
   end
 
   # GET /users/:id/interviews/1

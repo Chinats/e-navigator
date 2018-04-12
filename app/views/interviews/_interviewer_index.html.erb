@@ -11,13 +11,16 @@
   </div>
   <hr>
   <p>面接日程を変更する場合は以下から選んでください。</p>
-  <form>
-    <ul class="sw-List_plane">
-      <% @interviews.each do |interview| %>
-        <li class="sw-mt10"><input type="button" class="btn btn-default btn-block" value="<%= interview.candidate.to_s(:datetime) %>"></input></li>
-      <% end %>
-    </ul>
-  </form>
+  <ul class="sw-List_plane">
+    <% @interviews.each do |interview| %>
+      <li class="sw-mt10">
+        <%= form_for([@user, interview]) do |f| %>
+          <%= f.submit(interview.candidate.to_s(:datetime),
+          data: { confirm: interview.candidate.to_s(:datetime)+'で面接を確定していいですか？' }, class: "btn btn-default btn-block") %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
 <ul class="sw-List_plane">
   <li><%= link_to '戻る', root_path %></li>
