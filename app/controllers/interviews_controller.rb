@@ -7,7 +7,7 @@ class InterviewsController < ApplicationController
     @user = User.find(params[:user_id])
     @interviews = @user.interviews
     def update
-      Interview.find(params[:user_id]).approval = "却下"
+      Interview.where(approval: '承認').find(params[:user_id]).approval = "却下"
       @interview.approval = "承認"
       if @interview.save
         redirect_to user_interview_path, notice: '日程が更新されました。'
@@ -69,6 +69,6 @@ class InterviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def interview_params
-      params.permit(:candidate, :approval)
+      params.require(:interview).permit(:candidate, :approval)
     end
 end
