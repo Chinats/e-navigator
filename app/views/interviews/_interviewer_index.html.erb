@@ -1,0 +1,24 @@
+<h1><%= @user.name %>さんの面接一覧</h1>
+<% if @user.interviews.count == 0 %>
+  <p>面接日程が登録されていません。</p>
+<% else %>
+  <div>
+    <h2>現在の面接日程</h2>
+    <p>
+      <strong><%= Interview.where(approval: '承認').find_by(user_id: @user.id)&.candidate&.to_s(:datetime) %></strong>
+      に面接が設定されています。
+    </p>
+  </div>
+  <hr>
+  <p>面接日程を変更する場合は以下から選んでください。</p>
+  <form>
+    <ul class="sw-List_plane">
+      <% @interviews.each do |interview| %>
+        <li class="sw-mt10"><input type="button" class="btn btn-default btn-block" value="<%= interview.candidate.to_s(:datetime) %>"></input></li>
+      <% end %>
+    </ul>
+  </form>
+<% end %>
+<ul class="sw-List_plane">
+  <li><%= link_to '戻る', root_path %></li>
+</ul>

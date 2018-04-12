@@ -1,2 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/*------------------
+Site Wide Style
+------------------*/
+.sw-mt10{
+  margin-bottom: 10px;
+}
+ul.sw-List_plane{
+  margin-left: 0;
+  padding-left: 0;
+  li{
+    list-style: none;
+  }
+}

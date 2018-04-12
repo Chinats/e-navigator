@@ -1,0 +1,28 @@
+<h1><%= @user.name %>さんの面接一覧</h1>
+<% if @user.interviews.count == 0 %>
+  <p>面接日程が登録されていません。</p>
+<% else %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>面接開始時間</th>
+        <th>承認状態</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @interviews.each do |interview| %>
+        <tr>
+          <td><%= interview.candidate.to_s(:datetime) rescue nil %></td>
+          <td><%= interview.approval %></td>
+          <td><%= link_to '編集', edit_user_interview_path(@user, interview), class: "btn btn-warning" %></td>
+          <td><%= link_to '削除', user_interview_url(@user, interview), method: :delete, data: { confirm: '本当に削除してよろしいですか?' } ,class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<ul class="sw-List_plane">
+  <li><%= link_to '新しい面接日程を登録する', new_user_interview_path %></li>
+  <li><%= link_to '戻る', root_path %></li>
+</ul>
