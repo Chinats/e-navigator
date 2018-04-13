@@ -7,7 +7,8 @@ class InterviewsController < ApplicationController
     @user = User.find(params[:user_id])
     @interviews = @user.interviews
     def update
-      Interview.where(approval: '承認').find(params[:user_id]).approval = "却下"
+      @user = User.find(params[:user_id])
+      Interview.where(user_id: @user.id).update_all(approval:'却下')
       @interview.approval = "承認"
       if @interview.save
         redirect_to user_interview_path, notice: '日程が更新されました。'
