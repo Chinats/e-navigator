@@ -6,16 +6,6 @@ class InterviewsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @interviews = @user.interviews
-    def update
-      @user = User.find(params[:user_id])
-      Interview.where(user_id: @user.id).update_all(approval:'却下')
-      @interview.approval = "承認"
-      if @interview.save
-        redirect_to user_interview_path, notice: '日程が更新されました。'
-      else
-        render :index
-      end
-    end
   end
 
   # GET /users/:id/interviews/1
@@ -48,15 +38,25 @@ class InterviewsController < ApplicationController
 
   # PATCH/PUT /users/:id/interviews/1
   def update
-    @interview.user = current_user
-    if @interview.update(interview_params)
-      redirect_to user_interview_path, notice: '面接日程が更新されました。'
+    @user = User.find(params[:user_id])
+    if @user == current_user
+       @interview.user = current_user
+       if @interview.save
+         redirect_to user_interview_path, notice: '面接日程が更新されました。'
+       else
+         render :index
+       end
     else
-      render :edit
+      Interview.where(user_id: @user.id).update_all(approval:'却下')
+      @interview.approval = "承認"
+      if @interview.save
+        redirect_to user_interview_path, notice: '承認面接日程が更新されました。'
+      else
+        render :index
+      end
     end
   end
 
-  # DELETE /users/:id/interviews/1
   def destroy
     @interview.destroy
     redirect_to user_interviews_url, notice: '面接日程が削除されました。'
