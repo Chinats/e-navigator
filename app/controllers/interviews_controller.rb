@@ -40,7 +40,6 @@ class InterviewsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     if @user == current_user
-       @interview.user = current_user
        if @interview.save
          redirect_to user_interview_path, notice: '面接日程が更新されました。'
        else
