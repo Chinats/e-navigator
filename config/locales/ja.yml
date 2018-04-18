@@ -209,3 +209,8 @@ ja:
         female: "女性"
         male: "男性"
         others: "その他"
+    interview:
+      approval:
+        pending: "保留"
+        approval: "承認"
+        rejected: "却下"

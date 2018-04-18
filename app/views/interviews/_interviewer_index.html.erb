@@ -5,7 +5,7 @@
   <div>
     <h2>現在の面接日程</h2>
     <p>
-      <strong><%= Interview.where(approval: '承認').find_by(user_id: @user.id)&.candidate&.to_s(:datetime) %></strong>
+      <strong><%= Interview.where(approval:1).find_by(user_id: @user.id)&.candidate&.to_s(:datetime) %></strong>
       に面接が設定されています。
     </p>
   </div>
