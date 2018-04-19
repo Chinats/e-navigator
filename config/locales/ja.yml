@@ -212,5 +212,5 @@ ja:
     interview:
       approval:
         pending: "保留"
-        approval: "承認"
+        approved: "承認"
         rejected: "却下"
