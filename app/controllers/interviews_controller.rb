@@ -59,6 +59,9 @@ class InterviewsController < ApplicationController
     redirect_to user_interviews_url, notice: '面接日程が削除されました。'
   end
 
+  def mail
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_interview
