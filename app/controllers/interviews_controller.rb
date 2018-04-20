@@ -41,7 +41,7 @@ class InterviewsController < ApplicationController
     @user = User.find(params[:user_id])
     if @user == current_user
        if @interview.update(interview_params)
-         @interview.update_attributes(approval:0)
+         @interview.pending!
          redirect_to user_interview_path, notice: '面接日程が更新されました。'
        else
          render :edit
@@ -49,7 +49,7 @@ class InterviewsController < ApplicationController
     else
       if @interview.save
         Interview.where(user_id: @user.id).update_all(approval:0)
-        Interview.where(id: @interview.id).update(approval:1)
+        @interview.approved!
         redirect_to user_interview_path, notice: '承認面接日程が更新されました。'
       else
         render :index
