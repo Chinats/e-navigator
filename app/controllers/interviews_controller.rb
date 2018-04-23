@@ -47,9 +47,10 @@ class InterviewsController < ApplicationController
          render :edit
        end
     else
+      #@interview.approval = 1
+      @interview.approved!
       if @interview.save
         @user.interviews.where.not(id: @interview.id).update_all(approval:2)
-        @interview.approved!
         redirect_to user_interview_path, notice: '承認面接日程が更新されました。'
       else
         render :index
