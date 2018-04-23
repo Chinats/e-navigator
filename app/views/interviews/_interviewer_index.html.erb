@@ -15,6 +15,7 @@
     <% @interviews.each do |interview| %>
       <li class="sw-mt10">
         <%= form_for([@user, interview]) do |f| %>
+          <%= f.hidden_field :approval, {value: 'approved'} %>
           <%= f.submit(interview.candidate.to_s(:datetime),
           data: { confirm: interview.candidate.to_s(:datetime)+'で面接を確定していいですか？' }, class: "btn btn-default btn-block") %>
         <% end %>
