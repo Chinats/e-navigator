@@ -40,11 +40,11 @@ class InterviewsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     if @user == current_user
-       if @interview.update(interview_params)
-         @interview.pending!
-         redirect_to user_interview_path, notice: '面接日程が更新されました。'
-       else
-         render :edit
+      if @interview.update(interview_params)
+        @interview.pending!
+        redirect_to user_interview_path, notice: '面接日程が更新されました。'
+      else
+        render :edit
        end
     else
       @interview.approved!
