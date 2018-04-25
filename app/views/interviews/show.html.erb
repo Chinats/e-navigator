@@ -1,11 +1,10 @@
-<p id="notice"><%= notice %></p>
 <p>
   <strong>面接日程:</strong>
   <%= @interview.candidate %>
 </p>
 <p>
   <strong>承認状態:</strong>
-  <%= @interview.approval %>
+  <%= t "model.interview.approval.#{@interview.approval}" %>
 </p>
 <%= link_to '編集する', edit_user_interview_path(@user, @interview) %>
 <%= link_to '戻る', root_path %>

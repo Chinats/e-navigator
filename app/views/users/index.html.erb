@@ -24,13 +24,13 @@
       </td>
       <td>
         <% if user.sex? %>
-          <%= t "enum.sex.#{user.sex}" %>
+          <%= t "model.user.sex.#{user.sex}" %>
         <% elsif %>
           性別が未登録です。
         <% end %>
       </td>
       <td><%= user.school %></td>
-      <td><%= Interview.where(approval: '承認').find_by(user_id: user.id)&.candidate&.to_s(:datetime) %></td>
+      <td><%= Interview.approved.find_by(user_id: user.id)&.candidate&.to_s(:datetime) %></td>
       <td class="text-center"><%= link_to '面接一覧', user_interviews_path(user), class: "btn btn-primary" %></td>
     </tr>
   <% end %>

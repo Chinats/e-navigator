@@ -13,8 +13,8 @@
     <tbody>
       <% @interviews.each do |interview| %>
         <tr>
-          <td><%= interview.candidate.to_s(:datetime) rescue nil %></td>
-          <td><%= interview.approval %></td>
+          <td><%= interview&.candidate&.to_s(:datetime) %></td>
+          <td><%= t "model.interview.approval.#{interview.approval}" %></td>
           <td><%= link_to '編集', edit_user_interview_path(@user, interview), class: "btn btn-warning" %></td>
           <td><%= link_to '削除', user_interview_url(@user, interview), method: :delete, data: { confirm: '本当に削除してよろしいですか?' } ,class: "btn btn-danger" %></td>
         </tr>
