@@ -47,3 +47,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use Devise gem
 gem 'devise'
+
+# Use dotenv(for environment variable)
+gem 'dotenv-rails'
