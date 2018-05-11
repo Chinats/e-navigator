@@ -1,7 +1,7 @@
 class InterviewMailer < ApplicationMailer
   default from: 'notifications@example.com'
 
-  def interview_email(user)
+  def interview_email(user, current_user)
     @user = user
     @current_user = current_user
     @url  = 'https://e-navigator-chinats.herokuapp.com/'

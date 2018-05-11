@@ -49,7 +49,7 @@ class InterviewsController < ApplicationController
     else
       @interview.approved!
       @user.interviews.where.not(id: @interview.id).update_all(approval: :rejected)
-      InterviewMailer.interview_email(@user).deliver_now
+      InterviewMailer.interview_email(@user, @current_user).deliver_now
       redirect_to user_interview_path, notice: '承認面接日程が更新されました。'
     end
   end
