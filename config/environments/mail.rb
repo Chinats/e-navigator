@@ -1,5 +1,3 @@
-mail = ENV['MAIL_ADDRESS']
-pass = ENV['MAIL_PASSWORD']
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
